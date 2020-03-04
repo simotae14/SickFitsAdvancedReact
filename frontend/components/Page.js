@@ -1,32 +1,42 @@
 import React, { Component } from 'react';
 import Header from "../components/Header";
 import Meta from "../components/Meta";
-import styled from "styled-components";
+import styled, { ThemeProvider, injectGlobal } from "styled-components";
 
-const MyButton = styled.button`
-    background: red;
-    font-size: ${props => props.huge ? '100px' : '50px'};
-    .poop {
-        font-size: 100px;
-    }
+const theme = {
+    red: '#FF0000',
+    black: '#393939',
+    grey: '#3A3A3A',
+    lightGrey: '#E1E1E1',
+    offwhite: '#EDEDED',
+    maxWidth: '1000px',
+    bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)'
+};
+
+const StyledPage = styled.div`
+    background: white;
+    color: ${ props => props.theme.black };
+`;
+
+const Inner = styled.div`
+    max-width: ${ props => props.theme.maxWidth };
+    margin: 0 auto;
+    padding: 2rem;
 `;
 
 class Page extends Component {
     render() {
         return (
-            <div>
-                <Meta />
-                <Header />
-                <MyButton huge>
-                    Click me
-                    <span className="poop">💩</span>
-                </MyButton>
-                <MyButton>
-                    Click me
-                    <span className="poop">💩</span>
-                </MyButton>
-                {this.props.children}
-            </div>
+            <ThemeProvider theme={theme}>
+                <StyledPage>
+                    <Meta />
+                    <Header />
+                    <Inner>
+                        {this.props.children}
+                    </Inner>
+                </StyledPage>
+            </ThemeProvider>
+
         );
     }
 }
