@@ -6,6 +6,7 @@ frontend/.next/
 frontend/.build/
 frontend/layout.md
 frontend/variables.env
+frontend/.env
 backend/node_modules/
 backend/.DS_Store
 backend/*.log
@@ -14,3 +15,4 @@ backend/.next/
 backend/.build/
 backend/layout.md
 backend/variables.env
+backend/.env
